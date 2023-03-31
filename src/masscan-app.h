@@ -37,6 +37,7 @@ enum ApplicationProtocol {
     PROTO_TELNET,
     PROTO_RDP,          /* Microsoft Remote Desktop Protocol tcp/3389 */
     PROTO_HTTP_SERVER,  /* HTTP "Server:" field */
+    PROTO_MINECRAFT, /* Minecraft Protocol tcp/25565 */
     
     PROTO_end_of_list /* must be last one */
 };

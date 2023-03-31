@@ -18,6 +18,7 @@
 #include "proto-pop3.h"
 #include "proto-vnc.h"
 #include "proto-memcached.h"
+#include "proto-minecraft.h"
 #include "masscan-app.h"
 #include "scripting.h"
 #include "versioning.h"
@@ -42,6 +43,7 @@ struct Patterns patterns[] = {
     {"\x83\x00\x00\x01\x8f", 5, PROTO_SMB, SMACK_ANCHOR_BEGIN, 0}, /* Unspecified error */
 
     /* ...the remainder can be in any order */
+    {"{\x22", 2, PROTO_MINECRAFT, 0, 0},
     {"SSH-1.",      6, PROTO_SSH1, SMACK_ANCHOR_BEGIN, 0},
     {"SSH-2.",      6, PROTO_SSH2, SMACK_ANCHOR_BEGIN, 0},
     {"HTTP/1.",     7, PROTO_HTTP, SMACK_ANCHOR_BEGIN, 0},
@@ -302,6 +304,13 @@ banner1_parse(
                                    banout,
                                    more);
         break;
+    case PROTO_MINECRAFT:
+        banner_minecraft.parse(    banner1,
+                                   banner1->http_fields,
+                                   tcb_state,
+                                   px, length,
+                                   banout,
+                                   more);
 
     default:
         fprintf(stderr, "banner1: internal error\n");
@@ -364,6 +373,7 @@ banner1_create(void)
     b->payloads.tcp[11211] = (void*)&banner_memcached;
     b->payloads.tcp[23] = (void*)&banner_telnet;
     b->payloads.tcp[3389] = (void*)&banner_rdp;
+    b->payloads.tcp[25565] = (void*)&banner_minecraft;
     
     /* 
      * This goes down the list of all the TCP protocol handlers and initializes
@@ -382,6 +392,7 @@ banner1_create(void)
     banner_telnet.init(b);
     banner_rdp.init(b);
     banner_vnc.init(b);
+    banner_minecraft.init(b);
     
     /* scripting/versioning come after the rest */
     banner_scripting.init(b);

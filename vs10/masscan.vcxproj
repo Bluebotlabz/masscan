@@ -55,6 +55,7 @@
     <ClCompile Include="..\src\proto-coap.c" />
     <ClCompile Include="..\src\proto-dns.c" />
     <ClCompile Include="..\src\proto-ftp.c" />
+    <ClCompile Include="..\src\proto-minecraft.c" />
     <ClCompile Include="..\src\proto-http.c" />
     <ClCompile Include="..\src\proto-icmp.c" />
     <ClCompile Include="..\src\proto-imap4.c" />
@@ -167,6 +168,7 @@
     <ClInclude Include="..\src\proto-dns-parse.h" />
     <ClInclude Include="..\src\proto-dns.h" />
     <ClInclude Include="..\src\proto-ftp.h" />
+    <ClInclude Include="..\src\proto-minecraft.h" />
     <ClInclude Include="..\src\proto-http.h" />
     <ClInclude Include="..\src\proto-icmp.h" />
     <ClInclude Include="..\src\proto-imap4.h" />

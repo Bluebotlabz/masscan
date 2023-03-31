@@ -255,6 +255,9 @@
     <ClCompile Include="..\src\proto-ftp.c">
       <Filter>Source Files\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\proto-minecraft.c">
+      <Filter>Source Files\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\proto-imap4.c">
       <Filter>Source Files\proto</Filter>
     </ClCompile>
@@ -549,6 +552,9 @@
       <Filter>Source Files\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\src\proto-ftp.h">
+      <Filter>Source Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\proto-minecraft.h">
       <Filter>Source Files\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\src\proto-imap4.h">
